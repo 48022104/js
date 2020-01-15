@@ -1,0 +1,152 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>匀速动画</title>
+		<style type="text/css">
+			html,
+			body {
+				margin: 0;
+				padding: 0;
+			}
+
+			.goods_pic {
+				position: relative;
+				width: 450px;
+				height: 450px;
+				float: left;
+				margin-left: 30px;
+			}
+
+			.goods_pic .mask {
+				display: none;
+				position: absolute;
+				height: 180px;
+				width: 180px;
+				background: rgba(255, 255, 255, 0.6);
+				pointer-events: none;
+			}
+
+			.goods_pic img {
+				width: 450px;
+				height: 450px;
+			}
+
+			.goods_big {
+				background-size: 1125px;
+				margin-left: 30px;
+				width: 450px;
+				height: 450px;
+				border: 1px solid #505050;
+				float: left;
+				display: none;
+			}
+
+			.goods_pic_choose {}
+
+			.goods_pic_choose .pic {
+				border: 2px solid #fff;
+				widows: 60px;
+				height: 60px;
+				float: left;
+				cursor: pointer;
+			}
+
+			.goods_pic_choose .pic img {
+				widows: 60px;
+				height: 60px;
+				display: block;
+			}
+
+			.goods_pic_choose .pic_choosed {
+				border: 2px solid red;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div>
+			<div class="goods_pic" id="gp">
+				<div class="mask" id="gpm"></div>
+				<img src="" id="img1" />
+			</div>
+			<div class="clear"></div>
+
+			<div class="goods_pic_choose" id="pc">
+				<div class="pic pic_choosed"><img src="images/a8.jpg" /></div>
+				<div class="pic"><img src="images/a9.jpg" /></div>
+				<div class="pic"><img src="images/a10.jpg" /></div>
+				<div class="pic"><img src="images/a11.jpg" /></div>
+				<div class="pic"><img src="images/a12.jpg" /></div>
+			</div>
+		</div>
+
+		<div class="goods_big" id="gpb">
+			123
+		</div>
+	</body>
+	<script>
+		var gp = document.getElementById('gp');
+		var gpm = document.getElementById('gpm');
+		var gpb = document.getElementById('gpb');
+		var pc = document.getElementById('pc');
+		var pcdiv = pc.getElementsByClassName('pic');
+		var pcimg = pc.getElementsByTagName('img');
+		var img1 = document.getElementById('img1');
+		
+		var src = pcimg[0].src;
+		img1.src = src;
+		gpb.style.background = "url("+ src +")";
+		gpb.style.backgroundSize = "1125px";
+	
+		for(var i = 0; i < pcdiv.length; i++) {
+			pcdiv[i].index = i;
+			pcdiv[i].onclick = function() {
+				for(var i = 0; i < pcdiv.length; i++) {
+					pcdiv[i].className = "pic"
+				}
+				this.className = "pic pic_choosed";
+				var src = pcimg[this.index].src;
+				img1.src = src;
+				gpb.style.background = "url("+ src +")";
+				gpb.style.backgroundSize = "1125px";
+				
+			}
+		}
+
+		gp.onmouseover = function() {
+			gpm.style.display = "block";
+			gpb.style.display = "block";
+		};
+		gp.onmouseout = function() {
+			gpm.style.display = "none";
+			gpb.style.display = "none";
+		};
+		gp.onmousemove = function(e) {
+			
+			var xxx = e.offsetX;
+			var yyy = e.offsetY;
+			if (xxx < 160) {
+				xxx = 160;
+			};
+			if (xxx > 430) {
+				xxx = 430;
+			};
+
+			if (yyy < 160) {
+				yyy = 160;
+			};
+			if (yyy > 430) {
+				yyy = 430;
+			};
+			gpm.style.top = yyy - 160 + "px";
+			gpm.style.left = xxx - 160 + "px";
+			var xxxx = xxx - 160;
+			var yyyy = yyy - 160;
+			gpb.style.backgroundPositionY = 0 - yyyy * 2.5 + "px";
+			gpb.style.backgroundPositionX = 0 - xxxx * 2.5 + "px";
+		}
+	</script>
+
+</html>

@@ -1,0 +1,25 @@
+<style>
+	.aaa {
+		max-height: 4.8rem;
+		overflow: hidden;
+		display: -webkit-box;
+		-webkit-box-orient: vertical;
+		-webkit-line-clamp: 3;
+	}
+	/*多行文字多了...*/
+	
+	.aaa:before {
+		content: '';
+		position: absolute;
+		width: 200%;
+		height: 200%;
+		border-bottom: 1px solid #f3f3f3;
+		transform-origin: 0 0;
+		transform: scale(0.5, 0.5);
+		box-sizing: border-box;
+		z-index: -1;
+		left: 0;
+		top: 0;
+	}
+	/*下划线...*/
+</style>

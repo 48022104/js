@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<link href="css/base.css" rel="stylesheet" />
+
+	<body>
+		<div class="pic" onmouseover="inn()" onmouseout="out()">
+			<div class="mask" id="in" style="display: none;">1111</div>
+			<img src="images/800.jpg" />
+		</div>
+		
+
+		<script>
+			var
+				mask = document.getElementById("in");
+			function inn() {
+				mask.style.display = "table-cell"
+			}
+			function out() {
+				mask.style.display = "none"
+			}
+		</script>
+
+	</body>
+
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<link href="css/base.css" rel="stylesheet" />
+
+	<body>
+
+		<!DOCTYPE html>
+		<html>
+			<style>
+            #box{
+                width:500px;
+                height: 400px;
+                background:lightgoldenrodyellow;
+                border:1px solid black;
+            }
+
+            #head_list input{
+                float:left;
+                width:25%;
+            }/*div是块级元素，定义为float后在宽度允许的情况下，能在一行内容纳*/
+
+            .active{
+                color: cornflowerblue;
+            }/*初始及点击后的按钮类*/
+        </style>
+		
+
+		<body>
+			<div id="box"><!--包含tab按钮和内容的整体大框架-->
+            <div id="head_list"><!--tab按钮及内容-->
+                <input type="button" value="菜单一"  class="active"/>
+                <input type="button" value="菜单二" />
+                <input type="button" value="菜单三" />
+                <input type="button" value="菜单四" />
+            </div>
+            <div id="menu_content"><!--tab按钮对应的相应内容-->
+                <div style="display:block;">Hello,I am the first!</div>
+                <div style="display:none;">Hello,I am the seconed!</div>
+                <div style="display:none;">Hello,I am the third!</div>
+                <div style="display:none;">Hello,I am the forth!</div>
+            </div>
+        </div>
+        <script>
+            var head_list = document.getElementById("head_list");
+            var menu_content = document.getElementById("menu_content");
+            var oli = head_list.getElementsByTagName("input");//获取tab列表,多个
+            var odiv = menu_content.getElementsByTagName("div");//获取tab内容列表,多个
+            
+            
+            
+            for(var i=0 ; i<oli.length ; i++){
+                	oli[i].index = i;//定义index变量，以便让tab按钮和tab内容相互对应
+                    oli[i].onclick = function( ){//移除全部tab样式和tab内容
+                    for(var i =0; i < oli.length; i++){
+                        oli[i].className = "";
+                        odiv[i].style.display = "none";
+                    }
+                    this.className = "active";//为当前tab添加样式
+                    odiv[this.index].style.display="block";//显示当前tab对应的内容
+                }
+            }
+        </script>
+			
+			
+			
+		</body>
+
+		</html>
+
+	</body>
+
+</html>

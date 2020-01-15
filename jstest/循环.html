@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<link href="css/base.css" rel="stylesheet" />
+
+	<body>
+
+		<!DOCTYPE html>
+		<html>
+
+		<body>
+
+			<div class="all" id="bg" style="width: 1000px;">
+
+			</div>
+
+			<script>
+				var x = ""
+				for(var i = 1; i < 30; i++) {
+					if(i % 3 == 0) {
+						x += "<div class='pic'><img src='images/800_2.jpg'/></div>";
+						continue
+					} // % 的意思为求余数 
+					if(i % 3 == 1) {
+						x += "<div class='pic'><img src='images/800_3.jpg'/></div>";
+						continue
+					}
+					x += "<div class='pic'><img src='images/800.jpg'/></div>"
+				}
+				document.getElementById("bg").innerHTML = x
+			   
+			</script>
+
+		</body>
+
+		</html>
+
+	</body>
+
+</html>

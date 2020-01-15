@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<link href="css/base.css" rel="stylesheet" />
+	<style>
+		.aaa {
+			width: 100px;
+			height: 100px;
+			float: left;
+			margin: 10px;
+			background: #555555;
+			cursor: pointer;
+		}
+		
+		.bbb {
+			width: 100px;
+			height: 100px;
+			float: left;
+			margin: 10px;
+			background: red;
+			cursor: pointer;
+		}
+	</style>
+
+	<body>
+		<div class="all" id="all">
+			<div class="aaa bbb"></div>
+			<div class="aaa"></div>
+			<div class="aaa"></div>
+			<div class="aaa"></div>
+		</div>
+		<div class="clear"></div>
+		<div class="all" id="all_content">
+			<div class="ccc">1</div>
+			<div class="ccc">2</div>
+			<div class="ccc">3</div>
+			<div class="ccc">4</div>
+		</div>
+
+		<script>
+			var list = document.getElementById("all").getElementsByTagName("div");
+			var list_content = document.getElementById("all_content").getElementsByTagName("div");
+
+			for(var i = 0; i < list_content.length; i++) {
+				list_content[i].style.display = "none"
+				list_content[0].style.display = "block"
+			}
+
+			for(var i = 0; i < list.length; i++) {
+				list[i].index = i;
+				list[i].onclick = function() {
+					for(var i = 0; i < list.length; i++) {
+						list[i].className = "aaa"
+						list_content[i].style.display = "none"
+					}
+					this.className = "bbb";
+					list_content[this.index].style.display = "block"
+				}
+			}
+		</script>
+
+	</body>
+
+</html>

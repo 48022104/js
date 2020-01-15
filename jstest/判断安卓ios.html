@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+	</head>
+	<style>
+		.black {
+			z-index: 1;
+			position: fixed;
+			background: rgba(0, 0, 0, 0.5);
+			left: 0;
+			right: 0;
+			top: 0;
+			bottom: 0
+		}
+		
+		.tan {
+			background: #fff;
+			width: 300px;
+			margin: auto;
+		}
+	</style>
+
+	<body>
+
+		<script type="text/javascript">
+			var bbb = document.getElementsByTagName("body")[0];
+			var u = navigator.userAgent;
+			var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
+			var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+
+			if(isAndroid) {
+				bbb.style.background = "green";
+				bbb.innerHTML = "isAndroid";
+			} else {
+				bbb.style.background = "blue";
+				bbb.innerHTML = "isiOS";
+			}
+		</script>
+
+	</body>
+
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<link href="css/base.css" rel="stylesheet" />
+
+	<body>
+
+		<!DOCTYPE html>
+		<html>
+		<style>
+			.aaa {
+				width: 100px;
+				height: 100px;
+				float: left;
+				margin: 10px;
+				background: #555555;
+				cursor: pointer;
+			}
+			
+			.bbb {
+				width: 100px;
+				height: 100px;
+				float: left;
+				margin: 10px;
+				background: red;
+				cursor: pointer;
+			}
+		</style>
+
+		<body>
+			<div class="all">
+				<div class="aaa" id="aka">class aaa</div>
+				
+				
+				<div class="aaa" id="css">class aaa</div>
+				
+				
+			</div>
+
+			<div class="clear"></div>
+
+			<script>
+				var gogogo = document.getElementById("aka")
+				gogogo.onclick = function() {
+					if(gogogo.innerText.match("class")) {
+						gogogo.innerText = "diediedie"
+					} else {
+						gogogo.innerText = "class aaa"
+					}
+
+				}
+				
+				var cake = document.getElementById("css")
+				cake.onclick = function() {
+					if(cake.className == "aaa") {
+						cake.className = "aaa bbb "
+					} else {
+						cake.className = "aaa"
+					}
+
+				}
+			</script>
+
+		</body>
+
+		</html>
+
+	</body>
+
+</html>

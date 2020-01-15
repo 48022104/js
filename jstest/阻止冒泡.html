@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title></title>
+		<script type="text/javascript">
+			function fun1() {
+				alert("parent");
+			}
+			function funx() {
+				alert("child");
+			}
+			function stop() {
+				event.stopPropagation(); //阻止点击事件向上冒泡  
+			}
+		</script>
+	</head>
+
+	<body>
+		<div onclick="fun1()" style="height:100px;background-color:black;color:white;text-align:center;border:1px solid red">
+			父
+			<div onclick="funx();stop()" style="background-color:green;margin-top:20px;border:1px solid red;height:30px">
+				子
+			</div>
+		</div>
+	</body>
+
+</html>

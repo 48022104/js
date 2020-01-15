@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<link href="css/base.css" rel="stylesheet" />
+	
+
+	<body>
+		<script>
+			function changeImage() //设定点击事件
+			{ 
+				element = document.getElementById('myimage') //设定元素
+				if(element.innerText.match("2")) 
+				  {element.innerText = "11111111";} 
+				else
+				  {element.innerText = "22222222";}
+			}
+		</script>
+	    <div id="myimage" onclick="changeImage()"  class="black">222222</div>
+		
+	    <div id="css" onclick="changecss()" class="black">222222</div>
+	    <script>
+	    	   function changecss()
+	    	   {
+	    	   	change = document.getElementById('css');
+	    	   	if(change.className.match("black"))
+	    	   	  {change.className = 'red'}
+	    	   	  else{change.className = 'black'}
+	    	   }
+	    	
+	    	
+	    </script>
+	    
+	    
+	    
+	    
+
+	</body>
+
+</html>

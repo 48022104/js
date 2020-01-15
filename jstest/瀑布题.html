@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<link href="css/base.css" rel="stylesheet" />
+	<style>
+		*{margin: 0;padding:0; background: #f8f8f8;}
+		.list{width:200px; border:1px solid #dcdcdc;box-sizing: border-box; background: #fff; position:absolute; left: 5px; top: 5px;}
+		.list img{ width:180px; margin: 9px; display: block;}
+		
+	</style>
+	<body>
+		
+	</body>
+	<script>
+		var content = "",
+			picNum = 50;
+		for(i = 0; i < picNum; i++) {
+			content += "<div class='list'>"
+						+"<img src='images/" + (i + 1) + ".jpg'/>"
+					     +"</div>"
+		}
+		document.write(content);
+		
+		
+		
+		
+		
+	</script>
+	
+</html>

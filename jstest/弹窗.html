@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+	</head>
+	<style>
+		.black{z-index: 1; position: fixed; background: rgba(0,0,0,0.5); left: 0; right: 0; top: 0; bottom:0}
+		.tan{ background: #fff; width: 300px; margin: auto;}
+		
+	</style>
+	
+	<body>
+		
+		<button id="btn" onclick="tanchu()">弹出</button>
+		
+		<div class="black" id="black" onclick="shouqi()">			
+			<div class="tan" id="tan" onclick="stop()">123123123<br />123123123123<br />123123123</div>
+		</div>
+
+	</body>
+	
+	<script>
+		var btn = document.getElementById("btn");
+		var black = document.getElementById("black");
+		var tan = document.getElementById("tan");
+		
+		function tanchu(){
+			black.style.display = "block";
+		}
+		function shouqi(){
+			black.style.display = "none";
+		}
+		function stop() {
+				event.stopPropagation();
+		}
+		var h = tan.clientHeight;
+		var bh = black.clientHeight;
+		black.style.display = "none";
+		console.log(h);
+		console.log(bh);
+		tan.style.marginTop = (bh-h)/2 - 50  +"px";
+
+	</script>
+
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<link href="css/base.css" rel="stylesheet" />
+    <style>
+    	 .box{height: 30px; background: #E20000;}
+    </style>
+ 
+	<body>
+		<div class="box">
+		<input type="text" id="bbbb"/>
+		</div>
+		
+		<script>
+		
+			var bbbb = document.getElementById("bbbb");
+			
+			bbbb.onfocus = function(){
+			     bbbb.style.background = "#000000";
+			}
+			bbbb.onblur = function(){
+			     bbbb.style.background = "#fff";
+			}
+			
+		</script>
+        
+	</body>
+
+</html>

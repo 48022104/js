@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	
+	<style>
+		body {
+			margin: 0;
+			padding: 0;
+		}
+		
+		.list {
+			width: 200px;
+			position: absolute;
+			left: 10px;
+			top:10px;
+			transition: 0.5s;
+			background: #fff;
+			border: 1px solid #bfbfbf;
+		}
+		
+		img {
+			width: 190px;
+			margin: 5px;
+			display: block;
+		}
+	</style>
+
+	<body>
+
+	</body>
+	<script>
+
+		var content = "",
+			picNum = 50;
+		for(i = 0; i < picNum; i++) {
+			content += "<div class='list'>"
+						+"<img src='images/" + (i + 1) + ".jpg'/>"
+					     +"</div>"
+		}
+		document.write(content);
+
+		Array.prototype.max = function() {
+			return Math.max.apply({}, this);
+		}
+
+		Array.prototype.min = function () {  // 增加一个叫 min 
+			return Math.min.apply({}, this);
+		}
+
+		function change() {
+			var divNum = parseInt(document.documentElement.offsetWidth / 213),//能放多少个div
+				heights = [],
+				t = [],
+				lowHeight = 0,
+				lowHeightIndex = 0;
+
+			var list = document.getElementsByClassName("list");
+
+			for(i = 0; i < picNum; i++) {
+
+				if (i < divNum) {
+					heights[i] = list[i].offsetHeight;
+					//console.log(heights);
+					list[i].style.left = (i * 210) + 10 +  "px";
+					list[i].style.top = "10px";
+				} else {
+					lowHeight = heights.min();
+					//console.log("min: " + lowHeight);
+					lowHeightIndex = heights.indexOf(lowHeight);
+					//console.log(lowHeightIndex);
+					list[i].style.top = lowHeight + 20 + "px";
+					list[i].style.left = list[lowHeightIndex].style.left;
+					//console.log(list[lowHeightIndex].style.left);
+					heights[lowHeightIndex] += list[i].offsetHeight; 
+				}
+
+
+								
+			}
+			var money = "12" +"00" +"元"
+			
+			
+			
+		}
+
+		window.onload = function() {
+			change()
+		}
+		window.onresize = function() {
+			change()
+		}
+	</script>
+
+</html>
+
+</html>

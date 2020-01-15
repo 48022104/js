@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="100px" height="100px" viewBox="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.5 (67469) - http://www.bohemiancoding.com/sketch -->
+    <title>record</title>
+    <desc>Created with Sketch.</desc>
+    <g id="record" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <circle id="椭圆形"  stroke-opacity="0.501273777" stroke="#FF0000" stroke-width="5" cx="50" cy="50" r="30">
+			<animateTransform id="first" attributeName="transform" begin="0s; second.end" dur="2s" type="scale" from="1" to="1.2" />
+			<animateTransform id="second" attributeName="transform" begin="first.end" dur="2s" type="scale" from="1.2" to="1" />
+			<animate attributeName="cx" from="50" to="41.5" dur="2s" begin="0s;second.end" />
+			<animate attributeName="cx" from="41.5" to="50" dur="2s" begin="first.end" />
+			<animate attributeName="cy" from="50" to="41.5" dur="2s" begin="0s;second.end"  />
+			<animate attributeName="cy" from="41.5" to="50" dur="2s" begin="first.end" />
+			
+			
+			
+		</circle>
+        <circle id="椭圆形" fill="#E20000" cx="50" cy="50" r="25" ></circle>
+    </g>
+</svg>
