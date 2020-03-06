@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style type="text/css">
+		* {
+			margin: 0;
+			padding: 0;
+		}
+
+		#area {
+			width: 600px;
+			height: 500px;
+			border: 1px solid black;
+			margin: 100px auto;
+			position: relative;
+		}
+
+		#ball {
+			width: 40px;
+			height: 40px;
+			border-radius: 20px;
+			background-color: red;
+			position: absolute;
+		}
+
+		.black {
+			border-top: 1px solid #000;
+			border-left: 1px solid #000;
+			position: absolute;
+			right: -1px;
+			bottom: -1px;
+			background: #fff;
+			width: 200px;
+			height: 200px;
+			border-right:1px soild #fff ;
+			border-bottom:1px soild #fff ;
+		}
+	</style>
+
+	<body>
+		<div id="area">
+			<div class="black"></div>
+			<div id="ball"></div>
+		</div>
+
+
+	</body>
+
+
+
+
+	<script type="text/javascript">
+		var ball = document.getElementById("ball");
+		var area = document.getElementById("area");
+		var ballX = 0; //小球X轴初始位置
+		var ballY = 0; //小球Y轴初始位置
+		var directX = 1; //小球X轴方向
+		var directY = 1; //小球Y轴方向
+		var speed = 2; //小球运动速度
+		var time = 0
+
+
+		function move() {
+			ballX += directX * speed;
+			ballY += directY * speed;
+			ball.style.left = ballX + "px";
+			ball.style.top = ballY + "px";
+			maxWidth = area.offsetWidth - ball.offsetWidth;
+			maxHeight = area.offsetHeight - ball.offsetHeight;
+			
+
+			if (ballX >= maxWidth || ballX <= 0 || (ballX == 360 && ballY > 260)) {
+				directX = -directX;
+				time += 1;
+				
+			}
+			
+
+
+			if (ballY >= maxHeight || ballY <= 0 || (ballY == 260 && ballX > 360)) {
+				directY = -directY;
+				time += 1;
+			}
+			
+			// if( time==10){
+			// 	speed = 0;
+				
+			// }			
+			console.log("x:" + ballX  + "y:" + ballY)
+
+
+		}
+		
+		setInterval("move()", 10)
+		
+		
+		
+		
+		
+		
+	</script>
+
+</html>
