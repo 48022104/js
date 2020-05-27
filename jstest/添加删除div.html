@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style>
+		body{margin: 0; padding: 0;}
+		.clear{ clear: both;}
+		.add_all{font-size: 14px; color: #505050;}
+		.add_all .aaa{ float: left; width: 100px; height: 30px; display: flex;align-items: center;}
+		.add_all .aaa input{ margin:0 5px;}
+		
+		.add_all .aaa_choosed{ background: #f2f2f2;} 
+		.add_all .bbb_all{background: #f2f2f2;  clear: both; width: 100%;}
+		.add_all .bbb{ float: left; width: 100px; height: 30px; display: flex;align-items: center;background: #f2f2f2; }
+		.add_all .bbb input{ margin:0 5px;}
+	</style>
+	<body>
+		<div class="add_all" id="aaa">
+			<div class="aaa"><input type="checkbox" checked />111</div>
+			<div class="aaa aaa_choosed"><input type="checkbox" />222</div>
+			<div class="aaa"><input type="checkbox" />333</div>
+			<div class="aaa"><input type="checkbox" />444</div>
+			<div class="aaa"><input type="checkbox" />555</div>
+			<div class="aaa"><input type="checkbox" />666</div>
+			<div class="aaa"><input type="checkbox" />777</div>
+			<div class="aaa"><input type="checkbox" />888</div>
+			<div class="aaa"><input type="checkbox" />999</div>
+			<div class="aaa"><input type="checkbox" />aaa</div>
+			<div class="aaa"><input type="checkbox" />bbb</div>
+			<div class="aaa"><input type="checkbox" />ccc</div>
+			<div class="aaa"><input type="checkbox" />ddd</div>
+			<div class="aaa"><input type="checkbox" />eee</div>
+			<div class="bbb_all" style="display: none;"></div>
+		</div>
+	</body>
+	<script>
+		var list = document.getElementById('aaa').getElementsByClassName('aaa');
+		var a = document.getElementById('aaa');
+		
+		for (var i = 0; i < list.length; i++) {
+			list[i].index = i;
+			list[i].onclick = function() {
+				var w = document.getElementById('aaa').clientWidth;
+				var num = parseInt(w/100);
+				var n = parseInt(this.index/num) * num + num;
+				var b = document.getElementsByClassName('bbb_all');
+				a.removeChild(b[0]);
+				
+				var div = document.createElement("div");  
+				    div.className = "bbb_all";
+					div.innerHTML ="<div class='bbb'><input type='checkbox' />aaa</div><div class='bbb'><input type='checkbox' />aaa</div><div class='bbb'><input type='checkbox' />aaa</div><div class='clear'></div>";
+					var aaa = document.getElementById('aaa');
+					aaa.insertBefore(div, list[n]);
+				var b = document.getElementsByClassName('bbb_all');
+				
+				
+				
+				for (var i = 0; i < list.length; i++) {
+					list[i].className = "aaa";
+					this.className ="aaa aaa_choosed"
+				}
+			}
+		}
+	</script>
+</html>
