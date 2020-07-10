@@ -4,8 +4,8 @@
     <title>move</title>
     <desc>Created with Sketch.</desc>
     <g id="move" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <rect id="矩形" fill="#E75562" x="0" y="0" width="100" height="100"></rect>
-        <path d="M100,-4.26325641e-14 L150,-4.26325641e-14 L100,100 L50,100 L100,-4.26325641e-14 Z M-4.97379915e-14,-4.26325641e-14 L50,-4.26325641e-14 L-4.97379915e-14,100 L-50,100 L-4.97379915e-14,-4.26325641e-14 Z" id="合并形状" fill="#F2818B">
+        <rect id="矩形" fill="#fd9a38" x="0" y="0" width="100" height="100"></rect>
+        <path d="M100,-4.26325641e-14 L150,-4.26325641e-14 L100,100 L50,100 L100,-4.26325641e-14 Z M-4.97379915e-14,-4.26325641e-14 L50,-4.26325641e-14 L-4.97379915e-14,100 L-50,100 L-4.97379915e-14,-4.26325641e-14 Z" id="合并形状" fill="#ff7f00">
 			<animateMotion path="M -50  0 H 50 " dur="3s" repeatCount="indefinite" />
 		</path>
     </g>

@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>cookie</title>
+
+	</head>
+
+	<body>
+		<input type="text" id="text" />
+		<button onclick="setcookie()">写入</button>
+		<button onclick="getcookie()">读取</button>
+		<button onclick="delcookie()">删除</button>
+		<button onclick="getcookie2()">读取name</button>
+
+		<div id="result"></div>
+		<div id="red" style="color: red;"></div>
+
+		<script>
+			var t = document.getElementById('text');
+			var r = document.getElementById('result');
+			var red = document.getElementById('red');
+
+			function setcookie() {
+				var t_content = t.value;
+				document.cookie = "name" + "=" + t_content;
+				document.cookie = "name1" + "=" + t_content + "a";
+				document.cookie = "name2" + "=" + t_content + "b";
+				document.cookie = "name3" + "=" + t_content + "c";
+			}
+
+			function getcookie() {
+				r.innerHTML = document.cookie;
+			}
+			
+			
+			
+
+			function getcookie2() {
+				var decodedCookie = decodeURIComponent(document.cookie);
+				var ca = decodedCookie.split(';');//创建数组
+				
+				console.log(ca);
+				var username = getCookie("name1");
+				red.innerHTML = username;
+			}
+
+
+			function delcookie() {
+				document.cookie = "name2=; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
+				document.cookie = "name3=; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
+				document.cookie = "name1=; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
+				document.cookie = "undefined=; expires=Thu, 01 Jan 1970 00:00:00 UTC; ";
+				document.cookie = "name=; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
+				document.cookie = "_ga=; expires=Thu, 01 Jan 1970 00:00:00 UTC;path=/;";
+			}
+		</script>
+
+
+
+	</body>
+
+</html>
