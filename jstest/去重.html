@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>去重</title>
+	</head>
+
+
+
+	<body>
+		<textarea id="tapin">一一二二三三四四五五</textarea>
+		<button id="btn">去重</button>
+		<div id="out"></div>
+
+
+	</body>
+
+
+	<script>
+		var tapin = document.getElementById('tapin'),
+			out = document.getElementById('out'),
+			btn = document.getElementById('btn');
+		var word;
+		var aaa = [];
+
+		//获取数据
+
+		btn.onclick = function() {
+			word = tapin.value;
+			aaa = word.split(''); //创建数组
+			for (var i = 0, len = aaa.length; i < len; i++) {
+				for (var j = i + 1, len = aaa.length; j < len; j++) {
+					if (aaa[i] === aaa[j]) {
+						aaa.splice(j, 1);
+						j--; // 每删除一个数j的值就减1
+						len--; // j值减小时len也要相应减1（减少循环次数，节省性能）   
+						// console.log(j,len)
+					}
+				}
+			}
+
+
+
+			out.innerText = aaa;
+
+
+
+		}
+	</script>
+
+
+
+
+</html>
