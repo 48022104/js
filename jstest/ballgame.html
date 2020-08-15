@@ -60,7 +60,7 @@
 		var ballY = 0; //小球Y轴初始位置
 		var directX = 1; //小球X轴方向
 		var directY = 1; //小球Y轴方向
-		var speed = 2; //小球运动速度
+		var speed = 5; //小球运动速度
 		var time = 0
 
 
@@ -78,9 +78,6 @@
 				time += 1;
 				
 			}
-			
-
-
 			if (ballY >= maxHeight || ballY <= 0 || (ballY == 260 && ballX > 360)) {
 				directY = -directY;
 				time += 1;

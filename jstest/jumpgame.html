@@ -14,7 +14,7 @@
 		#area {
 			width: 600px;
 			height: 500px;
-			border: 1px solid black;
+			border-bottom: 1px solid black;
 			margin: 100px auto;
 			position: relative;
 		}
@@ -25,13 +25,12 @@
 			border-radius: 20px;
 			background-color: red;
 			position: absolute;
+			bottom: 0px;
 		}
-
-		
 	</style>
 
 	<body>
-		<button>jump</button>
+		<button onmousedown="jump()" id="button">jump</button>
 		<div id="area">
 			<div class="black"></div>
 			<div id="ball"></div>
@@ -43,15 +42,70 @@
 
 
 
+
 	<script type="text/javascript">
 		var ball = document.getElementById("ball");
+		var btn = document.getElementById("button");
 		var area = document.getElementById("area");
 		var ballX = 0; //小球X轴初始位置
 		var ballY = 0; //小球Y轴初始位置
 		var directX = 1; //小球X轴方向
 		var directY = 1; //小球Y轴方向
-		var speed = 2; //小球运动速度
+		var speed = 10; //小球运动速度
 		var time = 0;
+		var up;
+		var down;
+		var mxh = 200;
+		var mnh = 0;
+
+		
+
+		function jump() {
+			ballX += 1;
+			ball.style.bottom = ballX * speed + "px";
+		}
+		
+		
+		function fall() {
+			ballX -= 1;
+			ball.style.bottom = ballX * speed + "px";
+			if(ballX = 0){
+				ballX
+			}
+		}
+
+
+
+		btn.onmousedown = function() {
+			up = setInterval(function() {
+				jump()
+			}, 10);
+			
+		};
+
+
+
+
+		btn.onmouseup = function() {
+			clearInterval(up);
+			
+			if(ballX > 0 ){
+				down = setInterval(function() {
+					fall()
+				}, 10);
+			}else{
+				ball.style.bottom = 0 + "px";
+				clearInterval(down);
+			}
+			
+			
+			
+			
+		}
+		
+		btn.onmouseout = function() {
+			clearInterval(up);
+		}
 	</script>
 
 </html>
