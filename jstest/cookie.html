@@ -12,7 +12,7 @@
 		<button onclick="setcookie()">写入</button>
 		<button onclick="getcookie()">读取</button>
 		<button onclick="delcookie()">删除</button>
-		<button onclick="getcookie2()">读取name</button>
+		<button onclick="getdate()">读取name</button>
 
 		<div id="result"></div>
 		<div id="red" style="color: red;"></div>
@@ -37,14 +37,7 @@
 			
 			
 
-			function getcookie2() {
-				var decodedCookie = decodeURIComponent(document.cookie);
-				var ca = decodedCookie.split(';');//创建数组
-				
-				console.log(ca);
-				var username = getCookie("name1");
-				red.innerHTML = username;
-			}
+			
 
 
 			function delcookie() {
