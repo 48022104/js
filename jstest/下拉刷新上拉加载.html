@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover" />
+		<title></title>
+	</head>
+	<script>
+		var w = window.screen.width;
+		var html = document.getElementsByTagName("html")
+		html[0].style.fontSize = w / 37.5 + "px";
+	</script>
+	<style>
+		.yescroll {
+			position: absolute;
+			top: 0;
+			left: 0;
+			bottom: 0;
+			right: 0;
+			overflow-y: auto;
+		}
+
+		.yescroll::-webkit-scrollbar {
+			display: none;
+			width: 0 !important;
+			height: 0 !important;
+			-webkit-appearance: none;
+			background: transparent;
+			opacity: 0;
+		}
+
+
+		.yecontent {
+			min-height: 100%;
+			background: #989898;
+			position: relative;
+			z-index: 3;
+			width: 100%;
+			font-size: 10rem;
+		}
+
+		.toptips {
+			background: #505050;
+			height: 0px;
+			overflow: hidden;
+		}
+
+		.bottomtips {
+			background: #505050;
+			height: 0px;
+			overflow: hidden;
+		}
+		
+		header{
+			 height: 6.4rem;
+			 position: absolute;
+			 top: 0;
+			 left: 0;
+			 right: 0;
+			 background: #2D6EB7;
+		}
+		footer{
+			 height: 4.6rem;
+			 position: absolute;
+			 bottom: 0;
+			 left: 0;
+			 right: 0;
+			 background: #2D6EB7;
+		}
+		.yescroll_position{top: 6.4rem; bottom: 4.6rem;}
+	</style>
+
+
+
+	<body>
+		
+		<header>
+			
+		</header>
+		
+		<div class="yescroll yescroll_position" id="yescroll">
+			<div class="toptips" id="toptips">下拉刷新</div>
+			<div class="yecontent" id="yecontent">
+				<div class="list">1</div>
+				<div class="list">2</div>
+				<div class="list">3</div>
+				<div class="list">4</div>
+				<div class="list">5</div>
+				<div class="list">6</div>
+				<div class="list">7</div>
+				<div class="list">8</div>
+				<div class="list">9</div>
+				<div class="list">10</div>
+				<div class="list">11</div>
+				<div class="list">12</div>
+				<div class="list">13</div>
+				<div class="list">14</div>
+				<div class="list">15</div>
+				<div class="list">16</div>
+				<div class="list">17</div>
+				<div class="list">18</div>
+				<div class="list">19</div>
+				<div class="list">20</div>
+
+			</div>
+			<div class="bottomtips" id="bottomtips">上滑加载 </div>
+
+
+
+		</div>
+		<footer>
+			
+		</footer>
+
+		<script>
+			var yescroll = document.getElementById('yescroll');
+			var yecontent = document.getElementById('yecontent');
+			yecontent.style.marginTop = "0";
+			yecontent.style.marginBottom = "0";
+			var toptips = document.getElementById('toptips');
+			var bottomtips = document.getElementById('bottomtips');
+			bottomtips.style.height = "0px";
+			toptips.style.height = "0px";
+			var y1 = 0;
+			var y2 = 0;
+			var y3 = 0;
+			
+			
+			//手指触碰
+			yescroll.addEventListener("touchstart", showstart);
+			function showstart(e) {
+				y1 = e.touches[0].screenY;
+				// console.log("y1:---------------------------" + y1);
+				toptips.style.transition = "0s";
+				bottomtips.style.transition = "0s";
+			}
+			
+			
+			//手指滑动
+			yescroll.addEventListener("touchmove", showmove);
+			function showmove(e) {
+			
+				var l = yecontent.clientHeight;
+				var n = yescroll.scrollTop;
+				var h = yescroll.clientHeight;
+				y2 = e.touches[0].screenY;
+				// console.log("y2:" + y2);
+
+				if(n<100 && y1<y2 && (y2-y1) < 100){
+						toptips.style.height = y2 - y1 + "px";
+				}
+				
+				if( y2<y1 && (y1-y2) < 100){
+					bottomtips.style.height = y1 - y2 + "px";
+				}
+			}
+			
+			//手指离开
+			yescroll.addEventListener("touchend", showend);
+			function showend(e) {
+				bottomtips.style.transition = "0.4s";
+				toptips.style.transition = "0.4s";
+				y3 = e.changedTouches[0].screenY;
+				// console.log("y3:---------------------------" + y3);
+				toptips.style.height = "0px";
+				bottomtips.style.height = "0px";
+				
+				if(toptips.clientHeight > 90){
+					setTimeout(function(){ history.go(0);alert("刷新"); }, 500);
+					
+					
+				}
+				if(bottomtips.clientHeight > 90){
+					
+					
+					// setTimeout(function(){ history.go(0);alert("加载"); }, 500);
+					// setTimeout(function(){ 
+					// 	for(i = 0;i<20; i++){
+					// 		yecontent.innerHTML += "<div class='list'>"+ (i+21)+"</div>"
+					// 	}
+						
+					// }, 500);
+					
+					
+				}
+			}
+		</script>
+
+
+
+
+
+
+
+
+	</body>
+
+
+
+
+
+
+</html>
+
+

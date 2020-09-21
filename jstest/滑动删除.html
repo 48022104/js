@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8"/> 
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover" />
+		<title></title>
+	</head>
+	<script>
+		var w = window.screen.width;
+		var html = document.getElementsByTagName("html")
+		html[0].style.fontSize = w / 37.5 + "px";
+	</script>
+
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+		}
+
+		.line_show {
+			position: relative;
+			width: 100%;
+			background: #f2f2f2;
+			overflow: hidden;
+			margin-top: 10rem;
+		}
+
+		
+		.line_all {
+			height: 10rem;
+			width: 47.5rem;
+			transition: 0.3s;
+			margin-bottom: 1rem;
+		}
+
+		.line_main {
+			word-break: break-all;
+			font-size: 2rem;
+			width: 37.5rem;
+			background: yellow;
+			height: 10rem;
+			float: left;
+			padding: 1rem;
+			box-sizing: border-box;
+		}
+
+		.line_action {
+			width: 10rem;
+			background: red;
+			height: 10rem;
+			float: left;
+		}
+	</style>
+
+
+	<body >
+		<div class="line_show">
+			<div class="line_all"  >
+				<div class="line_main">
+					<div>
+						123hjlkjhaslkjhfaslkdjhflk123hjlkjhaslkjhfaslk
+						djhflk123hjlkjhaslkjhfaslkdjhflk123hjlkjhaslkjhfas
+						lkdjhflk\
+					</div>
+				</div>
+				<div class="line_action">删除</div>
+			</div>
+			
+			<div class="line_all"  >
+				<div class="line_main">
+					<div>
+						123hjlkjhaslkjhfaslkdjhflk123hjlkjhaslkjhfaslk
+						djhflk123hjlkjhaslkjhfaslkdjhflk123hjlkjhaslkjhfas
+						lkdjhflk\
+					</div>
+				</div>
+				<div class="line_action">删除</div>
+			</div>
+			
+			<div class="line_all"  >
+				<div class="line_main">
+					<div>
+						123hjlkjhaslkjhfaslkdjhflk123hjlkjhaslkjhfaslk
+						djhflk123hjlkjhaslkjhfaslkdjhflk123hjlkjhaslkjhfas
+						lkdjhflk\
+					</div>
+				</div>
+				<div class="line_action">删除</div>
+			</div>
+		</div>
+		
+	
+		
+		
+	</body>
+	
+
+	<script>
+		var l = document.getElementsByClassName('line_all');
+		var a = document.getElementsByClassName('line_action');
+		var y1=0,y2=0;
+		
+		for(var i = 0; i<l.length;i++){
+			l[i].index = i;
+			var w = a[0].clientWidth;
+			
+			// 触发
+			
+			l[i].addEventListener("touchstart",start);
+			function start(e){
+				y1 = e.touches[0].screenY;
+				console.log("y1:"+ y1 + "----------" )
+			}
+			
+		
+			
+			// 离开
+			
+			l[i].addEventListener("touchend",end);
+			function end(e){
+				
+				y2 = e.changedTouches[0].screenY;
+				if(y1>y2){
+				l[this.index].style.marginLeft = "-" + w + "px";
+				}
+				
+				if(y2>y1){
+				l[this.index].style.marginLeft = "0px";
+				}
+				
+			}
+			
+		}
+		
+		
+		
+		
+		
+		
+		
+	</script>
+
+
+
+
+</html>
+
+</html>

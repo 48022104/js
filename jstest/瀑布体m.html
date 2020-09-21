@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover" />
+		<title></title>
+	</head>
+	<script>
+		var w = window.screen.width;
+		var html = document.getElementsByTagName("html")
+		html[0].style.fontSize = w / 37.5 + "px";
+	</script>
+
+	<style>
+		#main{}
+		
+		* {
+			margin: 0;
+			padding: 0;
+		}
+		img{ width: 10rem;}
+		.goods{ width:10rem; background: #fff; padding: 1rem; margin-bottom: 1rem;}
+		.clear{ clear: both;}
+		#l,#c,#r{min-height: 1rem; width: 12rem; float: left; margin-right: 0.5rem;}
+	</style>
+
+
+	<body style="background: #f2f2f2;">
+		<div id="main" >
+			<div id="l">
+				
+			</div>
+			
+			<div id="c">
+				
+			</div>
+			<div id="r">
+				
+			</div>
+			<div class="clear"></div>
+			<div class="more">12312</div>
+		</div>
+		
+	</body>
+	
+	<script>
+		var l = document.getElementById("l");
+		var c = document.getElementById("c");
+		var r = document.getElementById("r");
+		
+		for(i=0;i<20;i++){
+			var lh = l.clientHeight;
+			var ch = c.clientHeight;
+			var rh = r.clientHeight;
+			
+			
+			if(lh<ch && lh<rh){
+				l.innerHTML += "<div class='goods'><img src='images/" + (i+1) + ".jpg'/> </div>";
+				console.log("1");
+				continue;
+			
+			}
+			
+			if(ch<lh && ch<rh){
+				c.innerHTML += "<div class='goods'><img src='images/" + (i+1) + ".jpg'/></div>";
+				console.log("2");
+				continue;	
+			}
+			if(rh<lh && rh<ch){
+				r.innerHTML += "<div class='goods'><img src='images/" + (i+1) + ".jpg'/></div>";
+				console.log("3");
+				continue;
+			}
+			
+			if(rh==lh && lh == ch ){
+				l.innerHTML += "<div class='goods'><img src='images/" + (i+1) + ".jpg'/></div>";
+				console.log("3");
+				continue;
+			}
+			if(ch == rh && lh > ch){
+				c.innerHTML += "<div class='goods'><img src='images/" + (i+1) + ".jpg'/></div>";
+				console.log("3");
+				continue;
+			}
+			
+			if(lh == rh && lh < ch){
+				l.innerHTML += "<div class='goods'><img src='images/" + (i+1) + ".jpg'/></div>";
+				console.log("3");
+				continue;
+			}
+			
+			if(ch == lh && lh < rh){
+				l.innerHTML += "<div class='goods'><img src='images/" + (i+1) + ".jpg'/></div>";
+				console.log("3");
+				continue;
+			}			
+		}
+		
+		
+		
+		
+	</script>
+
+	
+
+
+
+
+</html>
+
+</html>
