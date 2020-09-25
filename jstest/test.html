@@ -2,11 +2,27 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
-		<meta name="misapplication-tap-highlight" content="no"/>
+
 		<title></title>
 	</head>
-	<body>
+	<body onload="alert(123)">
+		<div id="all">
+			<!-- <img src="images/1.jpg"/> -->
+		</div>
 		
+
 	</body>
+
+	<script>
+		var a = document.getElementById('all');
+		a.innerHTML = '<img src="images/1.jpg"/>';
+		
+		window.onload = function() {
+			console.log(a.clientHeight)
+		}
+		// a.onload = function(){
+		// 	alert();
+		// 	console.log(a.clientHeight)
+		// }
+	</script>
 </html>
