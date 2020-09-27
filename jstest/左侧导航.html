@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+
+	</head>
+	<style>
+		*{padding: 0; margin: 0;}
+		.left{background: #f8f8f8; width: 250px;position: fixed; top: 0; bottom: 0; left: 0; }
+		.left .title{ box-sizing: border-box; padding-left: 10px; height: 50px; display: flex; align-items: center; border-bottom:1px solid #f2f2f2}
+		.left .title:hover{background: #dcdcdc;}
+		.left .left_line{transition: 0.5s; height:50px; overflow: hidden; cursor: pointer; }
+		.left .left_line .line_in{ background: #f2f2f2; padding-left: 30px; height: 30px; display: flex;align-items: center;}
+		.left .title_choosed{ background:#dcdcdc;}
+		
+		.left .left_line .line_in_choosed{ background:#dcdcdc;}
+		.left .line_in:hover{background: #dcdcdc;}
+	
+	</style>
+
+
+	<body>
+		<div class="left">
+			<div class="left_line">
+				<div class="title">AAAAAAA</div>
+				<div class="line_in">aaaaaaa</div>
+				<div class="line_in">aaaaaaa</div>
+				<div class="line_in">aaaaaaa</div>
+				<div class="line_in">aaaaaaa</div>
+				<div class="line_in">aaaaaaa</div>
+				<div class="line_in">aaaaaaa</div>
+			</div>
+			
+			<div class="left_line">
+				<div class="title">BBBBBBB</div>
+				<div class="line_in">bbbbbbb</div>
+				<div class="line_in">bbbbbbb</div>
+				<div class="line_in">bbbbbbb</div>
+			</div>
+			
+			<div class="left_line">
+				<div class="title">CCCCCCC</div>
+				<div class="line_in">ccccccc</div>
+			</div>
+			
+			<div class="left_line">
+				<div class="title">DDDDDDD</div>
+				<div class="line_in">ddddddd</div>
+				<div class="line_in">ddddddd</div>
+				<div class="line_in">ddddddd</div>
+				<div class="line_in">ddddddd</div>
+			</div>
+			
+			<div class="left_line">
+				<div class="title">EEEEEEE</div>
+			</div>
+			
+			<div class="left_line">
+				<div class="title">FFFFFFF</div>
+				<div class="line_in">ffffffff</div>
+				<div class="line_in">ffffffff</div>
+				<div class="line_in">ffffffff</div>
+			</div>
+			
+			<div class="left_line">
+				<div class="title">GGGGGGG</div>
+				<div class="line_in">ggggggg</div>
+				<div class="line_in">ggggggg</div>
+			</div>
+			
+			<div class="left_line">
+				<div class="title">HHHHHHH</div>
+				<div class="line_in">hhhhhhhh</div>
+				<div class="line_in">hhhhhhhh</div>
+				<div class="line_in">hhhhhhhh</div>
+			</div>
+		</div>
+		
+		<script>
+			var ll = document.getElementsByClassName('left_line');
+			var llll = document.getElementsByClassName('line_in');
+			var t = document.getElementsByClassName('title');
+			for(var i=0; i<ll.length;i++){
+				ll[i].style.height = '50px';
+			}
+			for(var i=0; i<ll.length;i++){
+				ll[i].onclick = function(){
+					for(var i=0; i<ll.length;i++){
+						ll[i].style.height = '50px';
+					}
+					var sll = this.getElementsByClassName('line_in')
+
+					console.log(sll.length)
+					this.style.height = sll.length*30 + 50 + "px"	
+				}
+			}
+			
+			for(var i=0; i<t.length;i++){
+				t[i].onclick = function(){
+					for(var i=0; i<ll.length;i++){
+						t[i].className = 'title';
+					}
+					this.className = "title title_choosed"
+				}
+				
+			}
+			
+			for(var i=0; i<llll.length;i++){
+				llll[i].onclick = function(){
+					
+					for(var i=0; i<llll.length;i++){
+						llll[i].className = 'line_in';
+					}
+					this.className = "line_in line_in_choosed"
+				  
+				}
+				
+			}
+			
+			
+			
+			
+			
+			
+		</script>
+		
+
+	</body>
+
+
+
+</html>
