@@ -29,12 +29,16 @@
 			transition: 0.5s;
 			left: 0px;
 			top: 0px;
+			cursor: pointer;
+			
 
 		}
 
 		.pic img {
 			width: 180px;
 			display: block;
+			transition: 0.5s;
+			
 		}
 	</style>
 	<body>
@@ -47,14 +51,14 @@
 		var a = document.getElementById("all");
 		var aw = document.documentElement.clientWidth;
 		var m = parseInt(aw / 210);
-		var n = 50;
+		var n = 20;
 		var arr = [];
 		var min;
 		var min_index;
 		a.style.width = m * 210 + "px";
 
 		for (var i = 0; i < n; i++) {
-			a.innerHTML += "<div class='pic' style='left:0px;top:0px' ><img src='images/" + (i + 1) + ".jpg'/></div>"
+			a.innerHTML += "<div class='pic' style='left:0px;top:0px';><img  style= 'width:180px' src='images/" + (i + 1) + ".jpg'/></div>"
 		}
 
 		var p = document.getElementsByClassName('pic');
@@ -101,6 +105,11 @@
 			gogogo()
 
 		}
+		
+		
+		
+		
+		
 	</script>
 
 </html>
