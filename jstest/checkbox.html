@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			input[type="radio"],input[type="checkbox"]{
+				cursor: pointer;
+			}
+			
+			label{
+				cursor: pointer; 
+				font-size:14px;
+				transition: 0.3s;
+			}
+			input[type="radio"],input[type="checkbox"]{ 
+				width:0; 
+				height:0; 
+				position:relative; 
+				opacity: 0;
+			}
+			
+			input[type="radio"]:checked + label:before{
+				background-color: red;
+				box-shadow: inset 0 0 0 3px #fff;
+			}
+			
+			
+				
+			input[type="radio"] + label{ 
+				height: 30px; 
+				line-height: 30px; 
+				padding-left: 24px; 
+				position: relative;
+			}
+			
+			input[type="radio"] + label:before{
+				content:'';
+				border-radius:50% ; 
+				background: #fff; 
+				left: 0; 
+				top: 0px; 
+				position: absolute; 
+				width: 20px; 
+				height: 20px; 
+				box-sizing: border-box; 
+				border: 1px solid #dcdcdc;
+				transition: 0.3s;
+			}
+			
+			input[type="checkbox"] + label:before{
+				content:"";
+				border-radius:6px ; 
+				background: #fff; 
+				left: 0; 
+				top: 0px; 
+				position: absolute; 
+				width: 20px; 
+				height: 20px; 
+				box-sizing: border-box; 
+				border: 1px solid #dcdcdc;
+			}
+			
+			
+			
+			input[type="checkbox"]:checked + label:before{
+				background-color: #3197EE;
+				box-shadow: inset 0 0 0 3px #fff;
+			}
+			input[type="checkbox"] + label{
+				height: 30px; 
+				line-height: 30px; 
+				padding-left: 24px; 
+				position: relative;
+			}
+			
+		</style>
+	</head>
+
+
+	<body>
+		<div class="checkbox">
+			<div class="checkbox_in"><input type="checkbox" id="aaa" /><label for="aaa">多选1</label></div>
+			<div class="checkbox_in"><input type="checkbox"  id="bbb"/><label for="bbb">多选2</label></div>
+			<div class="checkbox_in"><input type="checkbox"  id="ccc"/><label for="ccc">多选3</label></div>
+			<div class="checkbox_in"><input type="checkbox"  id="ddd"/><label for="ddd">多选4</label></div>
+		</div>
+
+
+		<div class="radio">
+			<div class="radio_in"><input type="radio" name="radio" id="r1" checked /><label for="r1">单选1</label></div>
+			<div class="radio_in"><input type="radio" name="radio" id="r2" /><label for="r2">单选2</label></div>
+			<div class="radio_in"><input type="radio" name="radio" id="r3" /><label for="r3">单选3</label></div>
+			<div class="radio_in"><input type="radio" name="radio" id="r4" /><label for="r4">单选4</label></div>
+		</div>
+	</body>
+
+
+</html>
+
+</html>
