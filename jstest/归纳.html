@@ -9,6 +9,17 @@
 
 
 	<body>
+		
+		var u = navigator.userAgent;
+		//Android终端
+		var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1;
+		//iOS终端
+		var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/);
+		if(isAndroid){}
+		if(isiOS){}
+		
+		
+		
 		setInterval("gun()",1000); 定时器，无限循环
 		xxx.substring(0,xxx.length-3)  去掉xxx 的后三位
 		元素前 + 变成字符串
