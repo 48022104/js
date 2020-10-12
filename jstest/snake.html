@@ -16,6 +16,8 @@
 			margin: 0;
 			padding: 0;
 		}
+		
+		#main{ width: 800px; height: 600px; background: #fff;position: relative;}
 
 
 		.all {
@@ -45,16 +47,21 @@
 		
 		
 
-		.step {
-			float: left;
-			width: 20px;
-			height: 20px;
-			background: #fff;
-		}
+		
 
 		.snake {
 			background: red;
+			position:absolute;
+			width: 20px;
+			height: 20px;
+			left: 0;
+			top: 0;
+			overflow: hidden;d
 		}
+		aaa
+		
+			
+	
 
 		.clear {
 			clear: both;
@@ -62,12 +69,12 @@
 	</style>
 
 	<body>
-		<div class="black" id="black">
+		<!-- <div class="black" id="black">
 			<div class="info">
 				<div class="txt"></div>
 				<div class="btn" onclick="gogogo()">开始</div>
 			</div>
-		</div>
+		</div> -->
 		<div class="all">
 			<div id="main">
 
@@ -79,71 +86,174 @@
 
 
 	<script type="text/javascript">
-		var m = document.getElementById('main'),
-			bh = document.body.clientHeight,
-			bw = document.body.clientWidth,
-			bhn = parseInt(bh / 20),
-			bwn = parseInt(bw / 20),
-			black = document.getElementById('black');
-		for (var i = 0; i < (bwn); i++) {
-			m.innerHTML += "<div class='step'></div>"
+		
+		
+		var n = 30,   //初始蛇的节数
+			moreleft = (n-1)*20,
+			movetop = 0,
+			m = document.getElementById("main");
+		for(var i=0; i<n;i++){
+				m.innerHTML+="<div class='snake'></div>"
 		}
-		var step_one_line = m.innerHTML;
-		for (var i = 0; i < (bhn - 1); i++) {
-			m.innerHTML += "<div class='clear'></div>" + step_one_line
+		var snake = document.getElementsByClassName('snake')
+		    
+		for(var i=0; i<n;i++){
+			snake[i].style.top = 0 + "px";
+			snake[i].style.left = (n-1)*20 - i*20 + "px";
+			// dssnake[i].innerHTML = i + 1;	
 		}
-
-		m.style.width = 20 * (bwn) + "px";
-		m.style.height = 20 * (bhn) + "px";
-		//以上是制作游戏画布
-
 		
 		
 		
-		var step = document.getElementsByClassName("step"),
-			n = 10,
-			step_last_index = n-1,
-			snake_last_index = n-1;
-		var snake = document.getElementsByClassName("snake");	
-		function besnake() {
-			for (var i = 0; i < n; i++) {
-				step[i].className = "step snake"
-			}
-		};
-		besnake();
+		
+		
+		
 		
 
 			
 
 		function goright() {
-			var step = document.getElementsByClassName("step"),
-				snake = document.getElementsByClassName("snake");
-				step_last_index = step_last_index +1;
-				
-				snake[0].className = "step";
-				step[step_last_index].className ="step snake";
+			var xxx =  snake[0].style.left;
+				xxx = xxx.substring(0,xxx.length-2)*1;
+			for(var i=n; i>0;i--){
+				if(i>1){
+				snake[i-1].style.left = snake[i-2].style.left;
+				snake[i-1].style.top = snake[i-2].style.top;
+				}
+			}	
+			snake[0].style.left = xxx + 20 + "px";
+			
+			for(var i=0; i<n;i++){
+				if(i>0){
+				if(snake[0].style.left == snake[i].style.left &&snake[0].style.top == snake[i].style.top ){
+					alert("撞了")
+				}}
+			}
+			if(snake[0].style.left == "-20px" ||snake[0].style.left == "820px" ||snake[0].style.top == "-20px" ||snake[0].style.top == "620px" ){
+					alert("撞了")
+				}
+			
+			
+		};
+		
+		function goleft() {
+			
+			var xxx =  snake[0].style.left;
+				xxx = xxx.substring(0,xxx.length-2)*1;
+			for(var i=n; i>0;i--){
+				if(i>1){
+				snake[i-1].style.left = snake[i-2].style.left;
+				snake[i-1].style.top = snake[i-2].style.top;
+				}
+			}	
+			snake[0].style.left = xxx - 20 + "px";
+			
+			for(var i=0; i<n;i++){
+				if(i>0){
+				if(snake[0].style.left == snake[i].style.left &&snake[0].style.top == snake[i].style.top ){
+					alert("撞了")
+				}}
+			}
+			if(snake[0].style.left == "-20px" ||snake[0].style.left == "820px" ||snake[0].style.top == "-20px" ||snake[0].style.top == "620px" ){
+					alert("撞了")
+				}
+			
+			
+			
+			
+			
 		};
 		
 		function godown() {
-			var step = document.getElementsByClassName("step"),
-				snake = document.getElementsByClassName("snake");
-				step_last_index = step_last_index  + bwn;
-				snake[0].className = "step";
-				step[step_last_index].className ="step snake";
+			var yyy =  snake[0].style.top;
+				yyy = yyy.substring(0,yyy.length-2)*1;
+			for(var i=n; i>0;i--){
+				if(i>1){
+				snake[i-1].style.left = snake[i-2].style.left;
+				snake[i-1].style.top = snake[i-2].style.top;
+				}
+			}	
+			snake[0].style.top = yyy + 20 + "px";
+			
+			for(var i=0; i<n;i++){
+				if(i>0){
+				if(snake[0].style.left == snake[i].style.left &&snake[0].style.top == snake[i].style.top ){
+					alert("撞了")
+				}}
+			}
+			if(snake[0].style.left == "-20px" ||snake[0].style.left == "820px" ||snake[0].style.top == "-20px" ||snake[0].style.top == "620px" ){
+					alert("撞了")
+				}
+		};
+		
+		function goup() {
+			var yyy =  snake[0].style.top;
+				yyy = yyy.substring(0,yyy.length-2)*1;
+			for(var i=n; i>0;i--){
+				if(i>1){
+				snake[i-1].style.left = snake[i-2].style.left;
+				snake[i-1].style.top = snake[i-2].style.top;
+				}
+			}	
+			snake[0].style.top = yyy - 20 + "px";
+			
+			for(var i=0; i<n;i++){
+				if(i>0){
+				if(snake[0].style.left == snake[i].style.left &&snake[0].style.top == snake[i].style.top ){
+					alert("撞了")
+				}}
+			}
+			if(snake[0].style.left == "-20px" ||snake[0].style.left == "820px" ||snake[0].style.top == "-20px" ||snake[0].style.top == "620px" ){
+					alert("撞了")
+				}
+			
+			
+			
+			
 		};
 		
 		
 		
 		
-
-
-
-
-
-		function gogogo(){
-			black.style.display = "none";
-			setInterval("godown()", 200);
+		
+		
+		
+		document.onkeydown = function(event){        //在全局中绑定按下事件  
+		　　　　var e  = event  ||  window.e;          
+		　　　　var keyCode = e.keyCode || e.which;
+		　　　　switch(keyCode){
+					case 83: godown();
+		　　　　　　	break;　　　　
+		
+		　　	   }
+				switch(keyCode){
+					case 68: goright();
+		　　　　　　	break;
+		　　	   }
+				switch(keyCode){
+					case 65: goleft();
+				　　break;　　　　
+			 }　　
+				switch(keyCode){
+							case 87: goup();
+				　　　　　　	break;　　　　
+				
+			}　　　　　
+		
 		}
+		
+		
+		
+		
+
+
+
+
+
+		// function gogogo(){
+		// 	black.style.display = "none";
+		// 	setInterval("godown()", 200);
+		// }
 		
 		//定时器， 无限循环
 
@@ -155,12 +265,7 @@
 
 
 
-		console.log(
-			"宽度: " + bw + ";  " +
-			"高度:" + bh + ";  " +
-			"纵列格子:" + bhn + ";  " +
-			"横向格子:" + bwn + ";  "
-		)
+
 	</script>
 
 </html>
