@@ -16,9 +16,13 @@
 			margin: 0;
 			padding: 0;
 		}
-		
-		#main{ width: 800px; height: 600px; background: #fff;position: relative;}
 
+		#main {
+			width: 800px;
+			height: 600px;
+			background: #fff;
+			position: relative;
+		}
 
 		.all {
 			position: fixed;
@@ -30,7 +34,7 @@
 			justify-content: center;
 			align-items: center;
 		}
-		
+
 		.black {
 			position: fixed;
 			z-index: 1;
@@ -38,33 +42,42 @@
 			top: 0;
 			bottom: 0;
 			right: 0;
-			background: rgba(0,0,0,0.3);
+			background: rgba(0, 0, 0, 0.3);
 			display: flex;
 			justify-content: center;
 			align-items: center;
 		}
-		.black .btn{ height: 50px; width: 150px; display: flex; justify-content: center; align-items: center; background: #0000FF; color: #fff;}
-		
-		
 
-		
+		.black .btn {
+			height: 50px;
+			width: 150px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			background: #0000FF;
+			color: #fff;
+		}
 
 		.snake {
 			background: red;
-			position:absolute;
+			position: absolute;
 			width: 20px;
 			height: 20px;
 			left: 0;
 			top: 0;
-			overflow: hidden;d
+			overflow: hidden;
+			d
 		}
-		aaa
-		
-			
-	
 
 		.clear {
 			clear: both;
+		}
+
+		.food {
+			background: green;
+			position: absolute;
+			width: 20px;
+			height: 20px;
 		}
 	</style>
 
@@ -86,165 +99,250 @@
 
 
 	<script type="text/javascript">
-		
-		
-		var n = 30,   //初始蛇的节数
-			moreleft = (n-1)*20,
+		var score = 0;
+		var n = 3, //初始蛇的节数
+			moreleft = (n - 1) * 20,
 			movetop = 0,
-			m = document.getElementById("main");
-		for(var i=0; i<n;i++){
-				m.innerHTML+="<div class='snake'></div>"
+			m = document.getElementById("main"),
+			d
+		for (var i = 0; i < n; i++) {
+			m.innerHTML += "<div class='snake'></div>"
 		}
 		var snake = document.getElementsByClassName('snake')
-		    
-		for(var i=0; i<n;i++){
+
+		for (var i = 0; i < n; i++) {
 			snake[i].style.top = 0 + "px";
-			snake[i].style.left = (n-1)*20 - i*20 + "px";
+			snake[i].style.left = (n - 1) * 20 - i * 20 + "px";
 			// dssnake[i].innerHTML = i + 1;	
 		}
-		
-		
-		
-		
-		
-		
-		
 
-			
+
+
+
+		function createfood() {
+			var foodx = Math.floor(Math.random() * 40);
+			var foody = Math.floor(Math.random() * 30);
+			console.log("x:" + foodx + " ; y:" + foody)
+			var food = document.createElement('div');
+			food.className = "food";
+			food.id = "fff";
+			food.style.top = foody * 20 + "px";
+			food.style.left = foodx * 20 + "px";
+			m.appendChild(food);
+		}
+
+		createfood();
+
+
+
+
 
 		function goright() {
-			var xxx =  snake[0].style.left;
-				xxx = xxx.substring(0,xxx.length-2)*1;
-			for(var i=n; i>0;i--){
-				if(i>1){
-				snake[i-1].style.left = snake[i-2].style.left;
-				snake[i-1].style.top = snake[i-2].style.top;
+
+			var xxx = snake[0].style.left;
+			xxx = xxx.substring(0, xxx.length - 2) * 1;
+			for (var i = n; i > 0; i--) {
+				if (i > 1) {
+					snake[i - 1].style.left = snake[i - 2].style.left;
+					snake[i - 1].style.top = snake[i - 2].style.top;
 				}
-			}	
+			}
 			snake[0].style.left = xxx + 20 + "px";
-			
-			for(var i=0; i<n;i++){
-				if(i>0){
-				if(snake[0].style.left == snake[i].style.left &&snake[0].style.top == snake[i].style.top ){
-					alert("撞了")
-				}}
-			}
-			if(snake[0].style.left == "-20px" ||snake[0].style.left == "820px" ||snake[0].style.top == "-20px" ||snake[0].style.top == "620px" ){
-					alert("撞了")
+
+			for (var i = 0; i < n; i++) {
+				if (i > 0) {
+					if (snake[0].style.left == snake[i].style.left && snake[0].style.top == snake[i].style.top) {
+						alert("撞了，您的得分是" + score)
+					}
 				}
-			
-			
+			}
+			if (snake[0].style.left == "-20px" || snake[0].style.left == "820px" || snake[0].style.top == "-20px" || snake[0].style
+				.top == "620px") {
+				alert("撞了，您的得分是" + score)
+			}
+			var fff = document.getElementById("fff");
+
+			if (snake[0].style.left == fff.style.left && snake[0].style.top == fff.style.top) {
+				n = n + 1;
+				fff.className = "snake";
+				fff.id = "";
+				score = score + 1;
+				createfood();
+			}
 		};
-		
+
 		function goleft() {
-			
-			var xxx =  snake[0].style.left;
-				xxx = xxx.substring(0,xxx.length-2)*1;
-			for(var i=n; i>0;i--){
-				if(i>1){
-				snake[i-1].style.left = snake[i-2].style.left;
-				snake[i-1].style.top = snake[i-2].style.top;
+
+			var xxx = snake[0].style.left;
+			xxx = xxx.substring(0, xxx.length - 2) * 1;
+			for (var i = n; i > 0; i--) {
+				if (i > 1) {
+					snake[i - 1].style.left = snake[i - 2].style.left;
+					snake[i - 1].style.top = snake[i - 2].style.top;
 				}
-			}	
+			}
 			snake[0].style.left = xxx - 20 + "px";
-			
-			for(var i=0; i<n;i++){
-				if(i>0){
-				if(snake[0].style.left == snake[i].style.left &&snake[0].style.top == snake[i].style.top ){
-					alert("撞了")
-				}}
-			}
-			if(snake[0].style.left == "-20px" ||snake[0].style.left == "820px" ||snake[0].style.top == "-20px" ||snake[0].style.top == "620px" ){
-					alert("撞了")
+
+			for (var i = 0; i < n; i++) {
+				if (i > 0) {
+					if (snake[0].style.left == snake[i].style.left && snake[0].style.top == snake[i].style.top) {
+						alert("撞了，您的得分是" + score)
+					}
 				}
-			
-			
-			
-			
-			
+			}
+			if (snake[0].style.left == "-20px" || snake[0].style.left == "820px" || snake[0].style.top == "-20px" || snake[0].style
+				.top == "620px") {
+				alert("撞了，您的得分是" + score)
+			}
+			if (snake[0].style.left == fff.style.left && snake[0].style.top == fff.style.top) {
+				n = n + 1;
+				fff.className = "snake";
+				fff.id = "";
+				score = score + 1;
+				createfood();
+			}
 		};
-		
+
 		function godown() {
-			var yyy =  snake[0].style.top;
-				yyy = yyy.substring(0,yyy.length-2)*1;
-			for(var i=n; i>0;i--){
-				if(i>1){
-				snake[i-1].style.left = snake[i-2].style.left;
-				snake[i-1].style.top = snake[i-2].style.top;
+			var yyy = snake[0].style.top;
+			yyy = yyy.substring(0, yyy.length - 2) * 1;
+			for (var i = n; i > 0; i--) {
+				if (i > 1) {
+					snake[i - 1].style.left = snake[i - 2].style.left;
+					snake[i - 1].style.top = snake[i - 2].style.top;
 				}
-			}	
+			}
 			snake[0].style.top = yyy + 20 + "px";
-			
-			for(var i=0; i<n;i++){
-				if(i>0){
-				if(snake[0].style.left == snake[i].style.left &&snake[0].style.top == snake[i].style.top ){
-					alert("撞了")
-				}}
-			}
-			if(snake[0].style.left == "-20px" ||snake[0].style.left == "820px" ||snake[0].style.top == "-20px" ||snake[0].style.top == "620px" ){
-					alert("撞了")
+
+			for (var i = 0; i < n; i++) {
+				if (i > 0) {
+					if (snake[0].style.left == snake[i].style.left && snake[0].style.top == snake[i].style.top) {
+						alert("撞了，您的得分是" + score)
+					}
 				}
+			}
+			if (snake[0].style.left == "-20px" || snake[0].style.left == "820px" || snake[0].style.top == "-20px" || snake[0].style
+				.top == "620px") {
+				alert("撞了，您的得分是" + score)
+			}
+			if (snake[0].style.left == fff.style.left && snake[0].style.top == fff.style.top) {
+				n = n + 1;
+				fff.className = "snake";
+				fff.id = "";
+				score = score + 1;
+				createfood();
+			}
 		};
-		
+
 		function goup() {
-			var yyy =  snake[0].style.top;
-				yyy = yyy.substring(0,yyy.length-2)*1;
-			for(var i=n; i>0;i--){
-				if(i>1){
-				snake[i-1].style.left = snake[i-2].style.left;
-				snake[i-1].style.top = snake[i-2].style.top;
+			var yyy = snake[0].style.top;
+			yyy = yyy.substring(0, yyy.length - 2) * 1;
+			for (var i = n; i > 0; i--) {
+				if (i > 1) {
+					snake[i - 1].style.left = snake[i - 2].style.left;
+					snake[i - 1].style.top = snake[i - 2].style.top;
 				}
-			}	
-			snake[0].style.top = yyy - 20 + "px";
-			
-			for(var i=0; i<n;i++){
-				if(i>0){
-				if(snake[0].style.left == snake[i].style.left &&snake[0].style.top == snake[i].style.top ){
-					alert("撞了")
-				}}
 			}
-			if(snake[0].style.left == "-20px" ||snake[0].style.left == "820px" ||snake[0].style.top == "-20px" ||snake[0].style.top == "620px" ){
-					alert("撞了")
+			snake[0].style.top = yyy - 20 + "px";
+
+			for (var i = 0; i < n; i++) {
+				if (i > 0) {
+					if (snake[0].style.left == snake[i].style.left && snake[0].style.top == snake[i].style.top) {
+						alert("撞了，您的得分是" + score)
+					}
 				}
-			
-			
-			
-			
+			}
+			if (snake[0].style.left == "-20px" || snake[0].style.left == "820px" || snake[0].style.top == "-20px" || snake[0].style
+				.top == "620px") {
+				alert("撞了，您的得分是" + score)
+			}
+			if (snake[0].style.left == fff.style.left && snake[0].style.top == fff.style.top) {
+				n = n + 1;
+				fff.className = "snake";
+				fff.id = "";
+				score = score + 1;
+				createfood();
+			}
 		};
+
+		var r1, l1, u1, d1;
+
+
 		
+
+
+		var r1 = setInterval(goright, 100);
+		var d1 = setInterval(godown, 100);
+		var l1 = setInterval(goleft, 100);
+		var u1 = setInterval(goup, 100);
 		
-		
-		
-		
-		
-		
-		document.onkeydown = function(event){        //在全局中绑定按下事件  
-		　　　　var e  = event  ||  window.e;          
-		　　　　var keyCode = e.keyCode || e.which;
-		　　　　switch(keyCode){
-					case 83: godown();
-		　　　　　　	break;　　　　
-		
-		　　	   }
-				switch(keyCode){
-					case 68: goright();
-		　　　　　　	break;
-		　　	   }
-				switch(keyCode){
-					case 65: goleft();
-				　　break;　　　　
-			 }　　
-				switch(keyCode){
-							case 87: goup();
-				　　　　　　	break;　　　　
-				
-			}　　　　　
-		
+		clearInterval(r1);
+		clearInterval(d1);
+		clearInterval(l1);
+		clearInterval(u1);
+
+
+
+
+
+
+
+		document.onkeydown = function(event) { //在全局中绑定按下事件  
+			var e = event || window.e;
+			var keyCode = e.keyCode || e.which;
+			switch (keyCode) {
+					case 83:
+					clearInterval(r1);
+					clearInterval(d1);
+					clearInterval(l1);
+					clearInterval(u1);
+					godown();
+					d1 = setInterval(godown, 100);
+					break
+
+			}
+			switch (keyCode) {
+				case 68:
+				clearInterval(r1);
+				clearInterval(d1);
+				clearInterval(l1);
+				clearInterval(u1);
+				goright();
+				r1 = setInterval(goright, 100);
+				break;
+
+
+			}
+			switch (keyCode) {
+				case 65:
+					clearInterval(r1);
+					clearInterval(d1);
+					clearInterval(l1);
+					clearInterval(u1);
+					goleft();
+					l1 = setInterval(goleft, 100);
+					break;
+			}
+			switch (keyCode) {
+				case 87:
+					
+					clearInterval(r1);
+					clearInterval(d1);
+					clearInterval(l1);
+					clearInterval(u1);
+					goup();
+					u1 = setInterval(goup, 100);
+					break;
+
+			}
+
 		}
-		
-		
-		
-		
+
+
+
+
+
+
 
 
 
@@ -254,18 +352,8 @@
 		// 	black.style.display = "none";
 		// 	setInterval("godown()", 200);
 		// }
-		
+
 		//定时器， 无限循环
-
-
-
-
-
-
-
-
-
-
 	</script>
 
 </html>

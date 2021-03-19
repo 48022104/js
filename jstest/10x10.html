@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style type="text/css">
+		html,
+		body {
+			background: #989898;
+			height: 100%;
+		}
+
+		* {
+			margin: 0;
+			padding: 0;
+		}
+		.aaa{display: table;border-collapse:collapse ;}
+		.bbb{display: table-row;}
+		.ccc{cursor: pointer; vertical-align:middle; text-align: center; width: 50px; height: 50px; display: table-cell; background: #fff; border: 1px solid #dcdcdc;}
+		
+	</style>
+
+	<body>
+		<div class="aaa" id="aaa">
+			
+		</div>
+	</body>
+
+
+
+
+	<script type="text/javascript">
+		//设置方块
+		var aaa = document.getElementById('aaa');
+		for(var i=0;i<10;i++){
+			aaa.innerHTML += "<div class='ccc'></div>"
+		}
+		aaa.innerHTML = "<div class='bbb'>" + aaa.innerHTML+"</div>"  
+		var cont = aaa.innerHTML
+		for(var i=0;i<9;i++){
+			aaa.innerHTML += cont;
+		}
+		
+		//放下图片
+		
+		var arr = []
+		for(var i =1; i< 101; i++){
+			arr.push(i);
+		}	
+		for(var i =0; i< 100; i++){
+			var n = Math.floor(Math.random()*(100));
+			var m ;
+			m = arr[i];
+			arr[i] = arr[n]
+			arr[n] = m;
+		}
+		
+		for(var i =0; i< 100; i++){
+			var ccc = document.getElementsByClassName("ccc");
+			ccc[i].innerHTML = arr[i];
+		}
+		
+		for(var i =0; i< 100; i++){
+			var ccc = document.getElementsByClassName("ccc");
+			if(ccc[i].innerHTML< 11){
+				ccc[i]. style.background = "red"
+			}
+			if(ccc[i].innerHTML< 21 && ccc[i].innerHTML >10  ){
+				ccc[i]. style.background = "yellow"
+			}
+			
+			if(ccc[i].innerHTML< 31 && ccc[i].innerHTML >20  ){
+				ccc[i]. style.background = "green"
+			}
+			if(ccc[i].innerHTML< 41 && ccc[i].innerHTML >30  ){
+				ccc[i]. style.background = "royalblue"
+			}
+			if(ccc[i].innerHTML< 51 && ccc[i].innerHTML >40  ){
+				ccc[i]. style.background = "purple"
+			}
+			if(ccc[i].innerHTML< 61 && ccc[i].innerHTML >50  ){
+				ccc[i]. style.background = "pink"
+			}
+			if(ccc[i].innerHTML< 71 && ccc[i].innerHTML >60  ){
+				ccc[i]. style.background = "orange"
+			}
+			if(ccc[i].innerHTML< 81 && ccc[i].innerHTML >70  ){
+				ccc[i]. style.background = "mediumvioletred"
+			}
+			if(ccc[i].innerHTML< 91 && ccc[i].innerHTML >80  ){
+				ccc[i]. style.background = "yellowgreen"
+			}
+			if(ccc[i].innerHTML< 101 && ccc[i].innerHTML >90  ){
+				ccc[i]. style.background = "blue"
+			}
+			ccc[i].innerHTML = "";
+			
+		}
+		
+		for(var i =0; i< 100; i++){
+			var x = (i+1)%10;
+			  if(x == 0){
+				  x =10
+			  }
+			var y = parseInt(i/10) + 1
+			ccc[i].setAttribute('x',x )
+			ccc[i].setAttribute('y',y )
+		}
+		
+		
+		var xxx,yyy,xxxb,yyyb,nnn,nnnb;
+		
+		for(var i =0; i< 100; i++){
+			ccc[i].onclick = function(){
+				xxxb = xxx;
+				yyyb = yyy;
+				this.innerHTML = "1"
+				this.className = "ccc choosed"
+				nnn = this.index;
+				xxx = this.getAttribute('x');
+				yyy = this.getAttribute('y');
+				console.log(  "x:" + xxx +" y:" + yyy +"  x前一个:" + xxxb +" y前一个:" + yyyb  )
+			}
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</script>
+
+</html>

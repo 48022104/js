@@ -1,28 +1,44 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta charset="UTF-8">
-
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover" />
 		<title></title>
 	</head>
-	<body onload="alert(123)">
-		<div id="all">
-			<!-- <img src="images/1.jpg"/> -->
-		</div>
-		
+	<style>
+		body,
+		html {
+			margin: 0;
+			padding: 0;
+			height: 100%;
+		}
 
+		.all {
+			height: 100%;
+			display: flex;
+			flex-direction: column;
+		}
+
+		.aaa {
+			background: red;
+			height: 100px;
+		}
+
+		.bbb {
+			background: blue;
+			flex-grow:1 ;
+		}
+
+		.ccc {
+			background: yellow;
+			height: 100px;
+		}
+	</style>
+	<body>
+		<div class="all">
+			<div class="aaa">1</div>
+			<div class="bbb">2</div>
+			<div class="ccc">3</div>
+		</div>
 	</body>
 
-	<script>
-		var a = document.getElementById('all');
-		a.innerHTML = '<img src="images/1.jpg"/>';
-		
-		window.onload = function() {
-			console.log(a.clientHeight)
-		}
-		// a.onload = function(){
-		// 	alert();
-		// 	console.log(a.clientHeight)
-		// }
-	</script>
 </html>

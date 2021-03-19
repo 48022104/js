@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+
+	<style>
+		table{border-collapse:collapse ;}
+		td{border: 1px solid #000; padding: 10px;}
+	</style>
+	<body>
+		<table cellpadding="0" cellspacing="0" border="0" id="tb"></table>
+	</body>
+
+	<script>
+		var tb = document.getElementById("tb")
+		var contd = "";
+		var contr = "";
+		for(var i=0;i<9;i++){
+			contd += "<td></td>"
+		}
+		for(var i=0;i<9;i++){
+			contr += "<tr>" + contd + "</tr>"
+		}
+		tb.innerHTML = contr;
+		
+		var td = document.getElementsByTagName("td");
+		
+		console.log(td)
+		
+		
+		
+	</script>
+
+</html>
