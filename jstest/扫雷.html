@@ -11,9 +11,11 @@
 		#field {
 			border-collapse: collapse;
 		}
-		#field tr{
+
+		#field tr {
 			background: #BFBFBF;
 		}
+
 		#field tr td {
 			width: 30px;
 			height: 30px;
@@ -34,22 +36,24 @@
 			background: #ffffff !important;
 			opacity: 1 !important;
 		}
+
 		.boom {
 			background: red !important;
 			opacity: 1 !important;
 		}
-		
+
 		body {
-		    -moz-user-select: none;
-		    -webkit-user-select: none;
-		    -ms-user-select: none;
-		    -khtml-user-select: none;
-		    user-select: none;
+			-moz-user-select: none;
+			-webkit-user-select: none;
+			-ms-user-select: none;
+			-khtml-user-select: none;
+			user-select: none;
 			margin: 0;
 			padding: 0;
-			
-		} 
-		.all{
+
+		}
+
+		.all {
 			display: flex;
 			justify-content: center;
 			align-items: center;
@@ -61,8 +65,17 @@
 			top: 0;
 			bottom: 0;
 		}
-		#txt{  line-height: 60px; height: 60px;}
-		#txt a{ color: red; cursor: pointer; margin-left: 10px;}
+
+		#txt {
+			line-height: 60px;
+			height: 60px;
+		}
+
+		#txt a {
+			color: red;
+			cursor: pointer;
+			margin-left: 10px;
+		}
 	</style>
 
 	<body>
@@ -74,7 +87,7 @@
 			</table>
 			<div id="txt"></div>
 		</div>
-		
+
 
 	</body>
 	<script>
@@ -132,14 +145,14 @@
 			f[a].className = "mine"
 		}
 		var mines = document.getElementsByClassName('mine');
-		
+
 
 
 		//算数字
 		for (var i = 0; i < f.length; i++) {
 			if (f[i].className == "mine") {
 				f[i].innerHTML = "💣"
-				
+
 			} else {
 				num = 0;
 				if ((i - size) >= 0 && f[i - size].getAttribute("x") == f[i].getAttribute("x")) {
@@ -199,18 +212,19 @@
 			}
 
 		}
+
 		function dig(e) {
 			if (f[e].innerHTML != "") {
 				f[e].className = "empty";
 			}
 			if (f[e].innerHTML == "💣") {
 				f[e].className = "boom";
-				for(var i=0;i<mines.length;i++){
+				for (var i = 0; i < mines.length; i++) {
 					mines[i].style.background = "red";
 					mines[i].style.opacity = "1";
 				}
-					txt.innerHTML = "失败<a onclick = history.go(0)>再来一次</a>"
-				
+				txt.innerHTML = "失败<a onclick = history.go(0)>再来一次</a>"
+
 			}
 			if (f[e].innerHTML == "" && f[e].className != "empty") {
 				f[e].style.opacity = "1";
@@ -261,9 +275,9 @@
 
 				}
 				//左
-				if((e-size-1)>=0 && f[e-size-1].getAttribute("x") == parseInt(f[e].getAttribute("x"))-1){
+				if ((e - size - 1) >= 0 && f[e - size - 1].getAttribute("x") == parseInt(f[e].getAttribute("x")) - 1) {
 					setTimeout(function() {
-					  f[e-size-1].click()
+						f[e - size - 1].click()
 					}, 40)
 
 				}
@@ -273,11 +287,20 @@
 			var ep = document.getElementsByClassName('empty');
 			if (ep.length == (size * size - mine_num)) {
 				txt.innerHTML = "恭喜成功<a onclick = history.go(0)>再来一次</a>"
-				
+
 
 			}
 
 		}
+
+		window.onload = function() {
+			//去掉默认的contextmenu事件
+			document.oncontextmenu = function(e) {
+				e.preventDefault();
+			};
+
+		}
+	
 	</script>
 
 
