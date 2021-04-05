@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport"
+			content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+	</head>
+	<style>
+		#field {
+			border-collapse: collapse;
+		}
+		#field tr{
+			background: #BFBFBF;
+		}
+		#field tr td {
+			width: 30px;
+			height: 30px;
+			border: 1px solid #000000;
+			vertical-align: middle;
+			text-align: center;
+			opacity: 0;
+			background: #000;
+			color: #000;
+			cursor: pointer;
+		}
+
+		.mine {
+			background: orange;
+		}
+
+		.empty {
+			background: #ffffff !important;
+			opacity: 1 !important;
+		}
+		.boom {
+			background: red !important;
+			opacity: 1 !important;
+		}
+		
+		body {
+		    -moz-user-select: none;
+		    -webkit-user-select: none;
+		    -ms-user-select: none;
+		    -khtml-user-select: none;
+		    user-select: none;
+			margin: 0;
+			padding: 0;
+			
+		} 
+		.all{
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			height: 100%;
+			flex-direction: column;
+			position: fixed;
+			left: 0;
+			right: 0;
+			top: 0;
+			bottom: 0;
+		}
+		#txt{  line-height: 60px; height: 60px;}
+		#txt a{ color: red; cursor: pointer; margin-left: 10px;}
+	</style>
+
+	<body>
+		<div class="all">
+			<table cellpadding="0" cellspacing="0" border="0" id="field">
+
+
+
+			</table>
+			<div id="txt"></div>
+		</div>
+		
+
+	</body>
+	<script>
+		var field = document.getElementById("field");
+		var txt = document.getElementById("txt");
+		var field_td = "";
+		var field_tr = "";
+		var mine_num = 10;
+		var size = 10;
+		var m1;
+		var m2 = [];
+		var m3 = [];
+		var repeat = 0;
+		var num = 0;
+		for (var i = 0; i < size; i++) {
+			y = i;
+			for (var j = 0; j < size; j++) {
+				field_td += "<td onclick=dig(" + (i * size + j) + ")" + " " + "x=" + j + " " + "y=" + y + "></td>"
+			}
+
+			field_tr += "<tr>" + field_td + "</tr>"
+			field_td = "";
+		}
+
+		field.innerHTML = field_tr;
+		var f = document.getElementsByTagName("td");
+
+		//创建30个随机不重复数字，塞入数组
+		for (var i = 0; i < 999; i++) {
+			m1 = Math.floor(Math.random() * size * size);
+			if (m2 == false) {
+				m2.push(m1);
+				repeat = 1;
+			} else {
+				repeat = 0;
+				for (var j = 0; j < m2.length; j++) {
+					if (m1 == m2[j]) {
+						repeat = 1;
+						break
+					}
+				}
+				if (repeat == 0) {
+					m2.push(m1);
+				}
+			};
+			if (m2.length == mine_num) {
+				break;
+			}
+		}
+		console.log("m2:" + m2)
+
+		//确定地雷
+		for (var i = 0; i < mine_num; i++) {
+			var a = m2[i];
+			f[a].className = "mine"
+		}
+		var mines = document.getElementsByClassName('mine');
+		
+
+
+		//算数字
+		for (var i = 0; i < f.length; i++) {
+			if (f[i].className == "mine") {
+				f[i].innerHTML = "💣"
+				
+			} else {
+				num = 0;
+				if ((i - size) >= 0 && f[i - size].getAttribute("x") == f[i].getAttribute("x")) {
+					if (f[i - size].className == "mine") {
+						num = num + 1
+					}
+				}
+				//上
+
+				if ((i - size + 1) >= 0 && f[i - size + 1].getAttribute("x") == parseInt(f[i].getAttribute("x")) + 1) {
+					if (f[i - size + 1].className == "mine") {
+						num = num + 1
+					}
+				}
+				//右上
+
+				if ((i + 1) < size * size && f[i + 1].getAttribute("x") == parseInt(f[i].getAttribute("x")) + 1) {
+					if (f[i + 1].className == "mine") {
+						num = num + 1
+					}
+				} //右
+				if ((i + size + 1) < size * size && f[i + size + 1].getAttribute("x") == parseInt(f[i].getAttribute("x")) +
+					1) {
+					if (f[i + size + 1].className == "mine") {
+						num = num + 1
+					}
+				} //右下			
+				if ((i + size) < size * size && f[i + size].getAttribute("x") == f[i].getAttribute("x")) {
+					if (f[i + size].className == "mine") {
+						num = num + 1
+					}
+				} //下
+
+				if ((i + size - 1) < size * size && f[i + size - 1].getAttribute("x") == parseInt(f[i].getAttribute("x")) -
+					1) {
+					if (f[i + size - 1].className == "mine") {
+						num = num + 1
+					}
+				} //左下
+
+				if ((i - 1) >= 0 && f[i - 1].getAttribute("x") == parseInt(f[i].getAttribute("x")) - 1) {
+					if (f[i - 1].className == "mine") {
+						num = num + 1
+					}
+				} //左
+
+				if ((i - size - 1) >= 0 && f[i - size - 1].getAttribute("x") == parseInt(f[i].getAttribute("x")) - 1) {
+					if (f[i - size - 1].className == "mine") {
+						num = num + 1
+					}
+				} //左上
+				if (num == 0) {
+					f[i].innerHTML = ""
+				} else {
+					f[i].innerHTML = num
+				}
+			}
+
+		}
+		function dig(e) {
+			if (f[e].innerHTML != "") {
+				f[e].className = "empty";
+			}
+			if (f[e].innerHTML == "💣") {
+				f[e].className = "boom";
+				for(var i=0;i<mines.length;i++){
+					mines[i].style.background = "red";
+					mines[i].style.opacity = "1";
+				}
+					txt.innerHTML = "失败<a onclick = history.go(0)>再来一次</a>"
+				
+			}
+			if (f[e].innerHTML == "" && f[e].className != "empty") {
+				f[e].style.opacity = "1";
+				f[e].className = "empty";
+				if ((e - size) >= 0 && f[e - size].getAttribute("x") == f[e].getAttribute("x")) {
+					setTimeout(function() {
+						f[e - size].click();
+					}, 5)
+				}
+				//上
+				if ((e - size + 1) >= 0 && f[e - size + 1].getAttribute("x") == parseInt(f[e].getAttribute("x")) + 1) {
+					setTimeout(function() {
+						f[e - size + 1].click();
+					}, 10)
+				}
+				//右上
+				if ((e + 1) < size * size && f[e + 1].getAttribute("x") == parseInt(f[e].getAttribute("x")) + 1) {
+					setTimeout(function() {
+						f[e + 1].click();
+					}, 15)
+				}
+				//右
+				if ((e + size + 1) < size * size && f[e + size + 1].getAttribute("x") == parseInt(f[e].getAttribute("x")) +
+					1) {
+					setTimeout(function() {
+						f[e + size + 1].click();
+					}, 20)
+				}
+				//右下	
+				if ((e + size) < size * size && f[e + size].getAttribute("x") == f[e].getAttribute("x")) {
+					setTimeout(function() {
+						f[e + size].click();
+					}, 25)
+				}
+				//下
+				if ((e + size - 1) < size * size && f[e + size - 1].getAttribute("x") == parseInt(f[e].getAttribute("x")) -
+					1) {
+					setTimeout(function() {
+						f[e + size - 1].click()
+					}, 30)
+
+				}
+				//左下
+				if ((e - 1) >= 0 && f[e - 1].getAttribute("x") == parseInt(f[e].getAttribute("x")) - 1) {
+					setTimeout(function() {
+						f[e - 1].click()
+					}, 35)
+
+				}
+				//左
+				if((e-size-1)>=0 && f[e-size-1].getAttribute("x") == parseInt(f[e].getAttribute("x"))-1){
+					setTimeout(function() {
+					  f[e-size-1].click()
+					}, 40)
+
+				}
+				//左上
+
+			}
+			var ep = document.getElementsByClassName('empty');
+			if (ep.length == (size * size - mine_num)) {
+				txt.innerHTML = "恭喜成功<a onclick = history.go(0)>再来一次</a>"
+				
+
+			}
+
+		}
+	</script>
+
+
+</html>
